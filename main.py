@@ -95,7 +95,7 @@ def draw_bg(bg_scroll):
 Mu = True
 So = True
 music = mixer.Sound('Sound/Music.mp3')
-music.set_volume(0.2)
+music.set_volume(0.5)
 move = mixer.Sound('Sound/Move.mp3')
 move.set_volume(0.5)
 jump = mixer.Sound('Sound/Jump.mp3')
@@ -358,7 +358,7 @@ def mapMenu():
     elif Clicked(E_Re):
         #Thoat chuong trinh
         pygame.quit()
-        sys.exit()
+        sys.exit() 
 
 def mapSettings():
     global So, Mu
@@ -456,7 +456,7 @@ def mapGameOver():
 
 def mapGuide():
     screen.fill((WHITE))
-    screen.blit(GuideText,GT_Re)
+    screen.blit(GuideText, GT_Re)
     Re2_Re = Ret.get_rect(center = (200, 550))
     screen.blit(Ret, Re2_Re)
     draw_text(f'GUIDE',font_Sbig,WHITE,0,50)
@@ -486,7 +486,6 @@ def set():
     platform_group.add(platform)
     kt = [True, True, True]
 
-# Khai báo các đối tượng ảnh
 Play = InputImage(("images\play.png"), 250, 60)
 P_Re = Play.get_rect(center = (200, 100))
 Setting = InputImage(("images\Setting.png"), 250, 60)
@@ -519,14 +518,15 @@ H_Re = Ret.get_rect(center = (200, 440))
 E2_Re = Exit.get_rect(center = (200, 510))
 
 GuideText = InputImage(("images\GuideText.png"), 300, 550)
-GT_Re = GuideText.get_rect(center = (200, 280))
+GT_Re = GuideText.get_rect(center = (200, 290))
+
 # ****************************************************************************************  
-               
+if Mu:
+    music.play()          
+       
 #vòng lặp 
 while True:
     clock.tick(FPS)
-    if Mu:
-        music.play() 
     mapMenu()
     #xử lý các sự kiện từ phía người chơi 
     for event in pygame.event.get():
